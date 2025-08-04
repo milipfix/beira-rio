@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa Estratégico - 360 Social Impact Studios</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .map-container {
+            display: flex;
+            min-height: 600px;
+        }
+
+        .path-section {
+            flex: 1;
+            padding: 30px;
+            position: relative;
+        }
+
+        .porto-alegre {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+        }
+
+        .passo-fundo {
+            background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
+            color: white;
+        }
+
+        .path-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .agents-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .agent-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .agent-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .agent-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .agent-type {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 10px;
+        }
+
+        .contact-info {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            padding-top: 10px;
+            margin-top: 10px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 800px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            position: relative;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            position: absolute;
+            right: 20px;
+            top: 15px;
+        }
+
+        .close:hover {
+            color: #000;
+        }
+
+        .modal h2 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .modal .agent-type {
+            color: #7f8c8d;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        .modal .contact-section {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        .modal .contact-section h3 {
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+
+        .central-hub {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.1rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            z-index: 10;
+        }
+
+        /* Roadmap Styles */
+        .roadmap-section {
+            background: #f8f9fa;
+            padding: 40px;
+        }
+
+        .roadmap-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .roadmap-header h2 {
+            color: #2c3e50;
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+        }
+
+        .roadmap-header p {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .roadmap-container {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .roadmap-path {
+            flex: 1;
+            border-radius: 15px;
+            padding: 30px;
+            color: white;
+        }
+
+        .roadmap-porto-alegre {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+        }
+
+        .roadmap-passo-fundo {
+            background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
+        }
+
+        .roadmap-path h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .phase {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .phase h4 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+            padding-bottom: 8px;
+        }
+
+        .action {
+            margin-bottom: 15px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            border-left: 4px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .action-title {
+            font-weight: bold;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        .agents-list {
+            margin-top: 10px;
+        }
+
+        .agent-link {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 4px 8px;
+            border-radius: 15px;
+            margin: 2px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .agent-link:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+
+        .synergies-section {
+            background: linear-gradient(135deg, #8e44ad 0%, #9b59b6 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+
+        .synergies-section h3 {
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .synergy-item {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .next-steps {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .next-steps h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .steps-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .step-item {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .step-number {
+            background: #e74c3c;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 768px) {
+            .map-container {
+                flex-direction: column;
+            }
+            
+            .central-hub {
+                position: relative;
+                margin: 20px auto;
+                transform: none;
+            }
+            
+            .agents-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .roadmap-container {
+                flex-direction: column;
+            }
+
+            .steps-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Mapa Estratégico de Entrada</h1>
+            <p>360 Social Impact Studios - Rio Grande do Sul</p>
+        </div>
+        
+        <div class="map-container">
+            <div class="path-section porto-alegre">
+                <div class="path-title">Porto Alegre<br>Integração Profunda</div>
+                <div class="agents-grid" id="porto-alegre-agents">
+                    <!-- Agentes de Porto Alegre serão inseridos aqui -->
+                </div>
+            </div>
+            
+            <div class="central-hub">
+                360 Social Impact Studios
+            </div>
+            
+            <div class="path-section passo-fundo">
+                <div class="path-title">Passo Fundo<br>Crescimento Ágil e de Nicho</div>
+                <div class="agents-grid" id="passo-fundo-agents">
+                    <!-- Agentes de Passo Fundo serão inseridos aqui -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Roadmap Section -->
+        <div class="roadmap-section">
+            <div class="roadmap-header">
+                <h2>Roadmap de Execução</h2>
+                <p>Ações efetivas de entrada nos ecossistemas de inovação do Rio Grande do Sul, segmentado por Porto Alegre e Passo Fundo. Cada ação está vinculada aos agentes e contatos estratégicos.</p>
+            </div>
+
+            <div class="roadmap-container">
+                <!-- Porto Alegre Roadmap -->
+                <div class="roadmap-path roadmap-porto-alegre">
+                    <h3>Porto Alegre - Integração Profunda</h3>
+                    
+                    <div class="phase">
+                        <h4>Fase 1: Estabelecimento e Credibilidade (Meses 1-2)</h4>
+                        
+                        <div class="action">
+                            <div class="action-title">Reuniões Estratégicas de Apresentação</div>
+                            <div class="agents-list">
+                                <span class="agent-link" onclick="highlightAgent('Jorge Audy')">Jorge Audy (Tecnopuc)</span>
+                                <span class="agent-link" onclick="highlightAgent('Pedro Valério')">Pedro Valério (Instituto Caldeira)</span>
+                            </div>
+                        </div>
+
+                        <div class="action">
+                            <div class="action-title">Participação em Eventos-Chave</div>
+                            <div class="agents-list">
+                                <span class="agent-link" onclick="highlightAgent('Simone Stulp')">Simone Stulp (Inova RS)</span>
+                                <span class="agent-link" onclick="highlightAgent('Luiz Carlos')">Luiz Carlos (Pacto Alegre)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="phase">
+                        <h4>Fase 2: Co-criação e Demonstração (Meses 3-4)</h4>
+                        
+                        <div class="action">
+                            <div class="action-title">Workshops Pro-bono e Diagnósticos</div>
+                            <div class="agents-list">
+                                <span class="agent-link" onclick="highlightAgent('Jorge Audy')">Tecnopuc / Jorge Audy</span>
+                                <span class="agent-link" onclick="highlightAgent('Pedro Valério')">Instituto Caldeira / Pedro Valério</span>
+                                <span class="agent-link" onclick="highlightAgent('Débora')">Numerik / Débora</span>
+                            </div>
+                        </div>
+
+                        <div class="action">
+                            <div class="action-title">Cartas de Intenção Institucionais</div>
+                            <div class="agents-list">
+                                <span class="agent-link" onclick="highlightAgent('Luiz Carlos')">Prefeitura POA / Luiz Carlos</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="phase">
+                        <h4>Fase 3: Consolidação e Expansão (Meses 5-6)</h4>
+                        
+                        <div class="action">
+                            <div class="action-title">Projetos Piloto e Joint Ventures</div>
+                            <div class="agents-list">
+                                <span class="agent-link" onclick="highlightAgent('Jorge Audy')">Tecnopuc</span>
+                                <span class="agent-link" onclick="highlightAgent('Pedro Valério')">Instituto Caldeira</span>
+                                <span class="agent-link" onclick="highlightAgent('Silvio')">Tecnosinos</span>
+                                <span class="agent-link" onclick="highlightAgent('Débora')">Numerik / Débora</span>
+                            </div>
+                        </div>
+
+                        <div class="action">
+                            <div class="action-title">Posicionamento como Referência</div>
+                            <div class="agents-list">
+                                <span class="agent-link" onclick="highlightAgent('Simone Stulp')">Inova RS / Simone Stulp</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Passo Fundo Roadmap -->
+                <div class="roadmap-path roadmap-passo-fundo">
+                    <h3>Passo Fundo - Crescimento Ágil e de Nicho</h3>
+                    
+                    <div class="phase">
+                        <h4>Fase 1: Introdução e Alinhamento (Meses 1-2)</h4>
+                        
+                        <div class="action">
+                            <div class="action-title">Introdução Institucional</div>
+                            <div class="agents-list">
+                                <span class="agent-link" onclick="highlightAgent('Prefeitura de Passo Fundo')">Prefeitura de Passo Fundo</span>
+                                <span class="agent-link" onclick="highlightAgent('UPF Tech Park')">UPF Tech Park</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="phase">
+                        <h4>Fase 2: Engajamento Comunitário (Meses 3-4)</h4>
+                        
+                        <div class="action">
+                            <div class="action-title">Workshops Comunitários e Mentorias</div>
+                            <div class="agents-list">
+                                <span class="agent-link" onclick="highlightAgent('UPF Tech Park')">UPF Tech Park</span>
+                                <span class="agent-link" onclick="highlightAgent('Comunidade Vértice')">Comunidade Vértice</span>
+                            </div>
+                        </div>
+
+                        <div class="action">
+                            <div class="action-title">Identificação de Oportunidades de Nicho</div>
+                            <div class="agents-list">
+                                <span class="agent-link" onclick="highlightAgent('Prefeitura de Passo Fundo')">Escritório de Desenvolvimento</span>
+                                <span class="agent-link" onclick="highlightAgent('Inova RS Cluster Noroeste')">Inova RS Cluster Noroeste</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="phase">
+                        <h4>Fase 3: Amplificação e Fomento (Meses 5-6)</h4>
+                        
+                        <div class="action">
+                            <div class="action-title">Fomento a Investimentos (Seed Funding)</div>
+                            <div class="agents-list">
+                                <span class="agent-link" onclick="highlightAgent('UPF Tech Park')">UPF Tech Park</span>
+                                <span class="agent-link" onclick="highlightAgent('Comunidade Vértice')">Comunidade Vértice</span>
+                            </div>
+                        </div>
+
+                        <div class="action">
+                            <div class="action-title">Amplificação e Replicação</div>
+                            <div class="agents-list">
+                                <span class="agent-link" onclick="highlightAgent('Inova RS Cluster Noroeste')">Inova RS Cluster Noroeste</span>
+                                <span class="agent-link" onclick="highlightAgent('Prefeitura de Passo Fundo')">Prefeitura de Passo Fundo</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Synergies Section -->
+            <div class="synergies-section">
+                <h3>Conexões Estratégicas e Sinergias</h3>
+                
+                <div class="synergy-item">
+                    <strong>Inova RS (Simone Stulp e Cluster Noroeste):</strong> Crucial para a amplificação das iniciativas, garantindo visibilidade e replicação em diferentes contextos do estado.
+                </div>
+            </div>
+
+            <!-- Next Steps -->
+            <div class="next-steps">
+                <h3>Próximos Passos para os Sócios da 360 Solutions</h3>
+                
+                <div class="steps-list">
+                    <div class="step-item">
+                        <div class="step-number">1</div>
+                        <h4>Aprovar o Roadmap</h4>
+                        <p>Validar as ações e os agentes/contatos propostos</p>
+                    </div>
+                    
+                    <div class="step-item">
+                        <div class="step-number">2</div>
+                        <h4>Autorizar Início das Ações</h4>
+                        <p>Dar aval para que as equipes iniciem os contatos e atividades</p>
+                    </div>
+                    
+                    <div class="step-item">
+                        <div class="step-number">3</div>
+                        <h4>Definir Métricas de Sucesso</h4>
+                        <p>Estabelecer indicadores para monitorar progresso e impacto</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="agentModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modalTitle"></h2>
+            <div id="modalType" class="agent-type"></div>
+            <div id="modalInfo"></div>
+            <div id="modalContact" class="contact-section" style="display: none;">
+                <h3>Contato da Rede</h3>
+                <div id="contactDetails"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Dados dos agentes
+        const agentsData = {
+            "porto_alegre": [
+                {
+                    "name": "Tecnopuc",
+                    "type": "Parque Tecnológico",
+                    "contact": {
+                        "name": "Jorge Audy",
+                        "role": "Autoridade em Inovação"
+                    },
+                    "info": "Um dos maiores e mais importantes parques tecnológicos do Brasil, ligado à PUCRS. Oferece infraestrutura completa para empresas de tecnologia e startups."
+                },
+                {
+                    "name": "Instituto Caldeira",
+                    "type": "Hub de Startups",
+                    "contact": {
+                        "name": "Pedro Valério",
+                        "role": "Diretor Executivo"
+                    },
+                    "info": "Um ecossistema de inovação que conecta grandes empresas, startups e universidades. Foco em transformação digital e inovação aberta."
+                },
+                {
+                    "name": "Tecnosinos",
+                    "type": "Parque Tecnológico",
+                    "contact": {
+                        "name": "Silvio Bittencourt",
+                        "role": "Governança de Parque Tecnológico"
+                    },
+                    "info": "Parque tecnológico de São Leopoldo, com foco em tecnologia da informação e comunicação. Forte conexão com a Universidade do Vale do Rio dos Sinos."
+                },
+                {
+                    "name": "Inova RS",
+                    "type": "Inovação Governamental",
+                    "contact": {
+                        "name": "Simone Stulp",
+                        "role": "Coordenadora"
+                    },
+                    "info": "Programa do governo do RS para fomentar a inovação em diferentes setores da economia gaúcha. Atua como articulador entre governo, empresas e academia."
+                },
+                {
+                    "name": "Prefeitura de Porto Alegre / Pacto Alegre",
+                    "type": "Governo / Iniciativa Colaborativa",
+                    "contact": {
+                        "name": "Luiz Carlos Pinto",
+                        "role": "Representante"
+                    },
+                    "info": "Iniciativa que busca transformar Porto Alegre em um polo de inovação e empreendedorismo. Foco em políticas públicas para inovação."
+                },
+                {
+                    "name": "Numerik",
+                    "type": "Consultoria",
+                    "contact": {
+                        "name": "Débora Chagas",
+                        "role": "Consultora"
+                    },
+                    "info": "Consultoria especializada em inovação e transformação digital. Atende empresas de diversos portes no desenvolvimento de estratégias de inovação."
+                }
+            ],
+            "passo_fundo": [
+                {
+                    "name": "UPF Tech Park",
+                    "type": "Parque Tecnológico",
+                    "info": "Parque tecnológico ligado à Universidade de Passo Fundo, um dos pioneiros na região. Foco em agronegócio e tecnologias sustentáveis."
+                },
+                {
+                    "name": "Prefeitura de Passo Fundo",
+                    "type": "Governo",
+                    "info": "Secretaria de Inovação com foco em fortalecer a conexão entre os atores do ecossistema local. Iniciativas como o HUB de amônia verde."
+                },
+                {
+                    "name": "Inova RS Cluster Noroeste",
+                    "type": "Inovação Governamental",
+                    "info": "Cluster regional do programa Inova RS, focado no desenvolvimento da inovação na região Noroeste do estado. Articulação regional de políticas de inovação."
+                },
+                {
+                    "name": "Comunidade Vértice",
+                    "type": "Comunidade de Inovação",
+                    "info": "Iniciativa local que impulsiona a inovação e fortalece o ecossistema de Passo Fundo. Foco em networking e desenvolvimento de projetos colaborativos."
+                }
+            ]
+        };
+
+        // Função para criar cards dos agentes
+        function createAgentCard(agent, city) {
+            const card = document.createElement('div');
+            card.className = 'agent-card';
+            card.onclick = () => openModal(agent);
+            card.setAttribute('data-agent-name', agent.contact ? agent.contact.name : agent.name);
+            
+            let contactHtml = '';
+            if (agent.contact) {
+                contactHtml = `
+                    <div class="contact-info">
+                        <strong>Contato:</strong> ${agent.contact.name}<br>
+                        <em>${agent.contact.role}</em>
+                    </div>
+                `;
+            }
+            
+            card.innerHTML = `
+                <div class="agent-name">${agent.name}</div>
+                <div class="agent-type">${agent.type}</div>
+                ${contactHtml}
+            `;
+            
+            return card;
+        }
+
+        // Função para destacar um agente
+        function highlightAgent(contactName) {
+            // Remove highlight anterior
+            document.querySelectorAll('.agent-card').forEach(card => {
+                card.style.border = '';
+                card.style.boxShadow = '';
+            });
+
+            // Encontra e destaca o agente
+            const targetCard = document.querySelector(`[data-agent-name*="${contactName}"]`);
+            if (targetCard) {
+                targetCard.style.border = '3px solid #f39c12';
+                targetCard.style.boxShadow = '0 0 20px rgba(243, 156, 18, 0.6)';
+                targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                
+                // Remove o highlight após 3 segundos
+                setTimeout(() => {
+                    targetCard.style.border = '';
+                    targetCard.style.boxShadow = '';
+                }, 3000);
+            }
+        }
+
+        // Função para abrir o modal
+        function openModal(agent) {
+            const modal = document.getElementById('agentModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalType = document.getElementById('modalType');
+            const modalInfo = document.getElementById('modalInfo');
+            const modalContact = document.getElementById('modalContact');
+            const contactDetails = document.getElementById('contactDetails');
+            
+            modalTitle.textContent = agent.name;
+            modalType.textContent = agent.type;
+            modalInfo.textContent = agent.info;
+            
+            if (agent.contact) {
+                modalContact.style.display = 'block';
+                contactDetails.innerHTML = `
+                    <strong>${agent.contact.name}</strong><br>
+                    <em>${agent.contact.role}</em>
+                `;
+            } else {
+                modalContact.style.display = 'none';
+            }
+            
+            modal.style.display = 'block';
+        }
+
+        // Função para fechar o modal
+        function closeModal() {
+            document.getElementById('agentModal').style.display = 'none';
+        }
+
+        // Inicializar a página
+        function init() {
+            const portoAlegreContainer = document.getElementById('porto-alegre-agents');
+            const passoFundoContainer = document.getElementById('passo-fundo-agents');
+            
+            // Adicionar agentes de Porto Alegre
+            agentsData.porto_alegre.forEach(agent => {
+                portoAlegreContainer.appendChild(createAgentCard(agent, 'porto_alegre'));
+            });
+            
+            // Adicionar agentes de Passo Fundo
+            agentsData.passo_fundo.forEach(agent => {
+                passoFundoContainer.appendChild(createAgentCard(agent, 'passo_fundo'));
+            });
+            
+            // Event listeners para o modal
+            document.querySelector('.close').onclick = closeModal;
+            window.onclick = function(event) {
+                const modal = document.getElementById('agentModal');
+                if (event.target === modal) {
+                    closeModal();
+                }
+            };
+        }
+
+        // Inicializar quando a página carregar
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
+

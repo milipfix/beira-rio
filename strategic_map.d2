@@ -1,0 +1,104 @@
+direction: right
+
+360_Social_Impact_Studios: {
+  shape: rectangle
+  label: "360 Social Impact Studios"
+}
+
+RS_Innovation_Ecosystem: {
+  shape: rectangle
+  label: "Ecossistema de Inovação RS"
+}
+
+360_Social_Impact_Studios -> RS_Innovation_Ecosystem
+
+RS_Innovation_Ecosystem -> Porto_Alegre_Path: {
+  label: "Caminho 1: Porto Alegre"
+  style: {stroke: blue}
+}
+
+RS_Innovation_Ecosystem -> Passo_Fundo_Path: {
+  label: "Caminho 2: Passo Fundo"
+  style: {stroke: green}
+}
+
+Porto_Alegre_Path: {
+  shape: rectangle
+  label: "Porto Alegre - Integração Profunda"
+  style: {fill: lightblue}
+}
+
+Passo_Fundo_Path: {
+  shape: rectangle
+  label: "Passo Fundo - Crescimento Ágil e de Nicho"
+  style: {fill: lightgreen}
+}
+
+# Agentes e Contatos - Porto Alegre
+
+subgraph Porto_Alegre_Agents {
+  direction: down
+  label: "Agentes e Contatos - Porto Alegre"
+  style: {fill: lightblue}
+
+  Tecnopuc: {label: "Tecnopuc"}
+  Instituto_Caldeira: {label: "Instituto Caldeira"}
+  Tecnosinos: {label: "Tecnosinos"}
+  Inova_RS_PA: {label: "Inova RS"}
+  Prefeitura_POA: {label: "Prefeitura de Porto Alegre / Pacto Alegre"}
+  Numerik: {label: "Numerik"}
+  FIERGS_PA: {label: "FIERGS - Balcão da Inovação"}
+
+  Jorge_Audy: {label: "Jorge Audy (Tecnopuc)"}
+  Pedro_Valerio: {label: "Pedro Valério (Instituto Caldeira)"}
+  Silvio: {label: "Silvio (Tecnosinos)"}
+  Simone_Stulp: {label: "Simone Stulp (Inova RS)"}
+  Luiz_Carlos: {label: "Luiz Carlos (Prefeitura POA / Pacto Alegre)"}
+  Debora: {label: "Débora (Numerik)"}
+  Marcus_Coester_PA: {label: "Marcus Coester (CITEC FIERGS)"}
+
+  Porto_Alegre_Path -> Tecnopuc
+  Porto_Alegre_Path -> Instituto_Caldeira
+  Porto_Alegre_Path -> Tecnosinos
+  Porto_Alegre_Path -> Inova_RS_PA
+  Porto_Alegre_Path -> Prefeitura_POA
+  Porto_Alegre_Path -> Numerik
+  Porto_Alegre_Path -> FIERGS_PA
+
+  Tecnopuc -> Jorge_Audy
+  Instituto_Caldeira -> Pedro_Valerio
+  Tecnosinos -> Silvio
+  Inova_RS_PA -> Simone_Stulp
+  Prefeitura_POA -> Luiz_Carlos
+  Numerik -> Debora
+  FIERGS_PA -> Marcus_Coester_PA
+}
+
+# Agentes e Contatos - Passo Fundo
+
+subgraph Passo_Fundo_Agents {
+  direction: down
+  label: "Agentes e Contatos - Passo Fundo"
+  style: {fill: lightgreen}
+
+  UPF_Tech_Park: {label: "UPF Tech Park"}
+  Prefeitura_PF: {label: "Prefeitura de Passo Fundo"}
+  Inova_RS_PF: {label: "Inova RS Cluster Noroeste"}
+  Comunidade_Vertice: {label: "Comunidade Vértice"}
+
+  Marcus_Coester_PF: {label: "Marcus Coester (CITEC FIERGS)"}
+
+  Passo_Fundo_Path -> UPF_Tech_Park
+  Passo_Fundo_Path -> Prefeitura_PF
+  Passo_Fundo_Path -> Inova_RS_PF
+  Passo_Fundo_Path -> Comunidade_Vertice
+
+  FIERGS_PA -> Marcus_Coester_PF: {label: "Ponto de Entrada Institucional"}
+}
+
+# Conexões e Intersecções
+
+Marcus_Coester_PA -> Marcus_Coester_PF: {label: "Conexão FIERGS"}
+Inova_RS_PA -> Inova_RS_PF: {label: "Conexão Inova RS"}
+
+

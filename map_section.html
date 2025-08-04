@@ -1,0 +1,194 @@
+<!-- Interactive Map Section -->
+<section id="interactive-map" class="section">
+    <div class="container">
+        <h2 class="section-title">Strategic Locations Map</h2>
+        <p class="section-description">Explore key innovation ecosystem locations in Rio Grande do Sul. Click on markers to see details and strategic actions.</p>
+        
+        <div class="map-container">
+            <div id="map" style="width: 100%; height: 500px;"></div>
+        </div>
+        
+        <!-- Location Details Modal -->
+        <div id="location-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h3 id="modal-title"></h3>
+                <p id="modal-address"></p>
+                <div id="modal-actions">
+                    <h4>Strategic Actions:</h4>
+                    <ul id="action-list">
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Leaflet CSS and JS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+<style>
+    .map-container {
+        margin: 20px 0;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Modal Styles */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+    
+    .modal-content {
+        background-color: #fff;
+        margin: 10% auto;
+        padding: 25px;
+        border-radius: 8px;
+        width: 80%;
+        max-width: 600px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        position: relative;
+    }
+    
+    .close-modal {
+        position: absolute;
+        top: 15px;
+        right: 20px;
+        font-size: 24px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+    
+    #modal-actions {
+        margin-top: 20px;
+    }
+    
+    #action-list {
+        padding-left: 20px;
+    }
+    
+    #action-list li {
+        margin-bottom: 12px;
+        line-height: 1.5;
+    }
+</style>
+
+<script>
+    // Location data
+    const locations = [
+        {
+            name: "Instituto Caldeira",
+            lat: -29.9937697,
+            lng: -51.198188,
+            address: "Rua Frederico Mentz 1606, Navegantes, Porto Alegre, RS",
+            actions: [
+                "Connection & Partnerships: Propose joint projects connecting 360 Social Impact Studios with large companies and startups in the Caldeira ecosystem.",
+                "Open Innovation: Participate in or propose open innovation initiatives, using the Institute's platform to co-create solutions with social impact.",
+                "Startup Engagement: Explore mentoring opportunities or acceleration programs for startups focused on social impact through the Conecta Caldeira program."
+            ]
+        },
+        {
+            name: "Tecnopuc",
+            lat: -30.0607212705726,
+            lng: -51.1742839,
+            address: "Avenida Ipiranga 6681, Prédio 97, Torre Einstein, Porto Alegre, RS",
+            actions: [
+                "Company/Startup Partnerships: Explore opportunities for 360 Social Impact Studios to partner with companies and startups in the Tecnopuc ecosystem, especially those focused on social impact.",
+                "Event/Program Participation: Engage in Tecnopuc's events, workshops, and acceleration programs to gain visibility and connect with key players.",
+                "Talent & Research Access: Leverage proximity to PUCRS to access talent and research relevant to social impact projects."
+            ]
+        },
+        {
+            name: "Tecnosinos",
+            lat: -29.7603,
+            lng: -51.1472,
+            address: "Unisinos Campus, São Leopoldo, RS",
+            actions: [
+                "IT/Communication Company Partnerships: Explore partnerships with technology and communication companies based at Tecnosinos, given the park's focus.",
+                "Talent Programs: Investigate talent or incubation programs that 360 Social Impact Studios can support or participate in, connecting with new talent and startups.",
+                "Internationalization: Leverage Tecnosinos' internationalization network to seek expansion opportunities or collaboration with global companies."
+            ]
+        },
+        {
+            name: "Porto Alegre City Hall",
+            lat: -30.028199,
+            lng: -51.228586,
+            address: "Praça Montevidéu, nº 10, Centro Histórico, Porto Alegre, RS",
+            actions: [
+                "Social Impact Project Partnership: Propose co-creation of projects that use innovation to solve urban social challenges, aligned with Pacto Alegre.",
+                "Data & Public Policy Access: Seek access to public data and information on innovation and urban development policies to support projects and strategies.",
+                "Resilience Initiative Engagement: Participate in initiatives such as the Climate Action Plan or Porto Alegre's Resilience Strategy, demonstrating 360 Social Impact Studios' commitment to the city's sustainable development."
+            ]
+        },
+        {
+            name: "Palácio Piratini (State Government)",
+            lat: -30.03389,
+            lng: -51.23083,
+            address: "Praça Marechal Deodoro, s/n, Centro Histórico, Porto Alegre, RS",
+            actions: [
+                "State-Level Presentation: Seek an audience with state government representatives (e.g., Secretary of Innovation, Science and Technology, InvestRS) to present 360 Social Impact Studios and its proposals for the Gaúcho ecosystem.",
+                "Public Policy Alignment: Identify and align 360 Social Impact Studios initiatives with state public policies for innovation and economic development, seeking synergies and support.",
+                "Government Forum Participation: Engage in forums, councils, or working groups promoted by the state government that discuss innovation, technology, and social impact, to contribute and gain visibility."
+            ]
+        }
+    ];
+
+    // Initialize map when DOM is loaded
+    document.addEventListener('DOMContentLoaded', function() {
+        // Initialize map
+        const map = L.map('map').setView([-30.0277, -51.2287], 10); // Center on Porto Alegre
+        
+        // Add OpenStreetMap tile layer
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+        
+        // Add markers for each location
+        locations.forEach(location => {
+            const marker = L.marker([location.lat, location.lng]).addTo(map);
+            
+            // Add click event to marker
+            marker.on('click', function() {
+                // Populate modal with location data
+                document.getElementById('modal-title').textContent = location.name;
+                document.getElementById('modal-address').textContent = location.address;
+                
+                // Clear and populate action list
+                const actionList = document.getElementById('action-list');
+                actionList.innerHTML = '';
+                location.actions.forEach(action => {
+                    const li = document.createElement('li');
+                    li.textContent = action;
+                    actionList.appendChild(li);
+                });
+                
+                // Show modal
+                document.getElementById('location-modal').style.display = 'block';
+            });
+        });
+        
+        // Close modal when clicking on X
+        document.querySelector('.close-modal').addEventListener('click', function() {
+            document.getElementById('location-modal').style.display = 'none';
+        });
+        
+        // Close modal when clicking outside of it
+        window.addEventListener('click', function(event) {
+            const modal = document.getElementById('location-modal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+    });
+</script>
+
