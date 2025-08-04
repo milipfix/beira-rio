@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>360 Social Impact Studios - Rio Grande do Sul Strategy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #3A305D 0%, #98FF98 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #3A305D;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #3A305D;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 80px;
+            text-align: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .hero-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .hero-card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .hero-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .hero-card h3 {
+            font-size: 1.5rem;
+            color: #3A305D;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-card h4 {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .cta-btn.primary {
+            background: #3A305D;
+            color: white;
+        }
+
+        .cta-btn.secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Main Content */
+        .main-content {
+            padding-top: 80px;
+        }
+
+        .section {
+            padding: 4rem 0;
+            background: rgba(255, 255, 255, 0.95);
+            margin: 2rem 0;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            color: #3A305D;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .section h3 {
+            font-size: 1.8rem;
+            color: #3A305D;
+            margin: 2rem 0 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">360 Social Impact Studios</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#porto-alegre">Porto Alegre</a></li>
+                <li><a href="#passo-fundo">Passo Fundo</a></li>
+                <li><a href="#agents">Agents & Sources</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Home Section -->
+            <section id="home" class="hero">
+                <div class="container">
+                    <div class="hero-content">
+                        <h1>Entry Strategy in Rio Grande do Sul</h1>
+                        <p>Connecting innovation and social impact through two strategic paths: Porto Alegre and Passo Fundo</p>
+                        <div class="hero-cards">
+                            <div class="hero-card porto-alegre">
+                                <h3>Porto Alegre</h3>
+                                <h4>Deep Integration</h4>
+                                <p>Focus on credentials, strategic insertion, and consolidated institutional partnerships</p>
+                            </div>
+                            <div class="hero-card passo-fundo">
+                                <h3>Passo Fundo</h3>
+                                <h4>Agile and Niche Growth</h4>
+                                <p>Building trust, community roots, and emerging opportunities</p>
+                            </div>
+                        </div>
+                        <div class="cta-buttons">
+                            <a href="#porto-alegre" class="cta-btn primary">Explore Porto Alegre Plan</a>
+                            <a href="#passo-fundo" class="cta-btn secondary">Explore Passo Fundo Plan</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Porto Alegre Plan Section -->
+            <section id="porto-alegre" class="section">
+                <h2>Porto Alegre Plan - Deep Integration</h2>
+                
+                <div style="background: #f8f9fa; padding: 2rem; border-radius: 15px; margin-bottom: 2rem;">
+                    <h3 style="color: #3A305D; text-align: center; margin-bottom: 1.5rem;">Innovation Ecosystem - Porto Alegre</h3>
+                    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; text-align: center;">
+                        <div>
+                            <div style="font-size: 2rem; font-weight: bold; color: #3A305D;">3º</div>
+                            <div style="font-size: 0.9rem; color: #666;">Largest ecosystem in the country</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 2rem; font-weight: bold; color: #3A305D;">1000+</div>
+                            <div style="font-size: 0.9rem; color: #666;">Active startups in RS</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 2rem; font-weight: bold; color: #3A305D;">Top 5</div>
+                            <div style="font-size: 0.9rem; color: #666;">Latin America</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 2rem; font-weight: bold; color: #3A305D;">170+</div>
+                            <div style="font-size: 0.9rem; color: #666;">Organizations in Tecnopuc</div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>360 Proposals for Entry</h3>
+                <ul>
+                    <li><strong>Free innovation diagnosis</strong> based on ISO 56002</li>
+                    <li><strong>Technical workshop</strong> on Tech Transfer</li>
+                    <li><strong>Co-branded hackathon</strong> with social impact</li>
+                    <li><strong>Voluntary participation</strong> in panels or events</li>
+                </ul>
+
+                <h3>Entry Channels</h3>
+                <ul>
+                    <li>Letters of intent</li>
+                    <li>Content co-authorship</li>
+                    <li>Institutional participation via Inova RS or Caldeira</li>
+                </ul>
+
+                <h3>Tactical Steps (Months 1-6)</h3>
+                <div>
+                    <h4>Month 1-2: Establishment and Credibility</h4>
+                    <p>Strategic presentation meetings with Jorge Audy and Pedro Valério. Participation in key ecosystem events.</p>
+                    
+                    <h4>Month 3-4: Co-creation and Demonstration</h4>
+                    <p>Pro-bono workshops and diagnostics. Institutional letters of intent with FIERGS and Porto Alegre City Hall.</p>
+                    
+                    <h4>Month 5-6: Consolidation and Expansion</h4>
+                    <p>Pilot projects and joint ventures. Positioning as a reference via Inova RS and FIERGS.</p>
+                </div>
+            </section>
+
+            <!-- Passo Fundo Plan Section -->
+            <section id="passo-fundo" class="section">
+                <h2>Passo Fundo Plan - Agile and Niche Growth</h2>
+                
+                <div style="background: #f8f9fa; padding: 2rem; border-radius: 15px; margin-bottom: 2rem;">
+                    <h3 style="color: #3A305D; text-align: center; margin-bottom: 1.5rem;">Innovation Ecosystem - Passo Fundo</h3>
+                    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; text-align: center;">
+                        <div>
+                            <div style="font-size: 0.9rem; color: #666;">Unique scientific park in the region</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 2rem; font-weight: bold; color: #3A305D;">SMI-PF</div>
+                            <div style="font-size: 0.9rem; color: #666;">Municipal Innovation System</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 2rem; font-weight: bold; color: #3A305D;">Vértice</div>
+                            <div style="font-size: 0.9rem; color: #666;">Collaborative community</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 2rem; font-weight: bold; color: #3A305D;">Emerging</div>
+                            <div style="font-size: 0.9rem; color: #666;">Growing ecosystem</div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>360 Proposals</h3>
+                <ul>
+                    <li><strong>Free innovation maturity diagnosis</strong></li>
+                    <li><strong>Technical workshop</strong> for local SMEs</li>
+                    <li><strong>Pilot project</strong> with local companies</li>
+                </ul>
+
+                <h3>Plan Steps</h3>
+                <div>
+                    <h4>Month 1-2: Introduction and Alignment</h4>
+                    <p>Institutional presentation via FIERGS. Alignment with city hall and UPF Tech Park.</p>
+                    
+                    <h4>Month 3-4: Community Engagement</h4>
+                    <p>Community workshops and mentoring. Identification of niche opportunities via Vértice Community.</p>
+                    
+                    <h4>Month 5-6: Amplification and Fostering</h4>
+                    <p>Fostering investments (seed funding). Amplification via Inova RS Northwest Cluster.</p>
+                </div>
+            </section>
+
+            <!-- Agents Section -->
+            <section id="agents" class="section">
+                <h2>Agents & Sources</h2>
+                <p style="text-align: center; margin-bottom: 2rem;">Complete directory of strategic agents in both plans. Key contacts for implementation.</p>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                    <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 10px;">
+                        <h4>Jorge Audy</h4>
+                        <p><strong>Innovation and Development Superintendent</strong></p>
+                        <p>PUCRS and Tecnopuc</p>
+                        <p>Key point for institutional validation and exploration of collaboration opportunities with Tecnopuc.</p>
+                    </div>
+                    
+                    <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 10px;">
+                        <h4>Pedro Valério</h4>
+                        <p><strong>Executive Director (CEO)</strong></p>
+                        <p>Instituto Caldeira</p>
+                        <p>Leader of the main startup hub in RS. Ideal for partnerships in acceleration programs and innovation events.</p>
+                    </div>
+                    
+                    <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 10px;">
+                        <h4>Simone Stulp</h4>
+                        <p><strong>Secretary of Innovation, Science and Technology</strong></p>
+                        <p>SICT/RS - Inova RS</p>
+                        <p>State government representative in innovation. Crucial for amplifying initiatives and replication in different contexts of the state.</p>
+                    </div>
+                    
+                    <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 10px;">
+                        <h4>Luiz Carlos Pinto</h4>
+                        <p><strong>Secretary of Innovation and Coordinator</strong></p>
+                        <p>Porto Alegre City Hall / Pacto Alegre</p>
+                        <p>Leader in urban innovation and smart cities. Fundamental for integration with public policies and social impact projects.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+</body>
+</html>
+
