@@ -1,0 +1,91 @@
+{
+  "porto_alegre": [
+    {
+      "name": "Tecnopuc",
+      "type": "Technology Park",
+      "contact": {
+        "name": "Jorge Audy",
+        "role": "Innovation Authority"
+      },
+      "info": "One of the largest and most important technology parks in Brazil, linked to PUCRS."
+    },
+    {
+      "name": "Instituto Caldeira",
+      "type": "Startup Hub",
+      "contact": {
+        "name": "Pedro Valério",
+        "role": "Executive Director"
+      },
+      "info": "An innovation ecosystem that connects large companies, startups, and universities."
+    },
+    {
+      "name": "Tecnosinos",
+      "type": "Technology Park",
+      "contact": {
+        "name": "Silvio Bittencourt",
+        "role": "Technology Park Governance"
+      },
+      "info": "Technology park in São Leopoldo, focused on information and communication technology."
+    },
+    {
+      "name": "Inova RS",
+      "type": "Governmental Innovation",
+      "contact": {
+        "name": "Simone Stulp",
+        "role": "Coordinator"
+      },
+      "info": "A program by the RS government to foster innovation in different sectors of the Gaúcho economy."
+    },
+    {
+      "name": "Porto Alegre City Hall / Pacto Alegre",
+      "type": "Government / Collaborative Initiative",
+      "contact": {
+        "name": "Luiz Carlos Pinto",
+        "role": "Representative"
+      },
+      "info": "An initiative that seeks to transform Porto Alegre into a hub for innovation and entrepreneurship."
+    },
+    {
+      "name": "Numerik",
+      "type": "Consulting",
+      "contact": {
+        "name": "Débora Chagas",
+        "role": "Consultant"
+      },
+      "info": "Consultancy specialized in innovation and digital transformation."
+    }
+  ],
+  "passo_fundo": [
+    {
+      "name": "UPF Tech Park",
+      "type": "Technology Park",
+      "info": "Technology park linked to the University of Passo Fundo, one of the pioneers in the region."
+    },
+    {
+      "name": "Passo Fundo City Hall",
+      "type": "Government",
+      "info": "Innovation Secretariat focused on strengthening the connection between local ecosystem actors."
+    },
+    {
+      "name": "Inova RS Cluster Noroeste",
+      "type": "Governmental Innovation",
+      "info": "Regional cluster of the Inova RS program, focused on the development of innovation in the Northwest region of the state."
+    },
+    {
+      "name": "Comunidade Vértice",
+      "type": "Innovation Community",
+      "info": "Local initiative that drives innovation and strengthens the Passo Fundo ecosystem."
+    },
+    {
+      "name": "Ricardo Fantinelli",
+      "type": "Innovation and Technology Specialist",
+      "contact": {
+        "name": "Ricardo Fantinelli",
+        "role": "Publicist, Master in Technology"
+      },
+      "info": "Professional with vast experience in brand management, design, and technology, active in the Passo Fundo innovation ecosystem."
+    }
+  ]
+}
+
+
