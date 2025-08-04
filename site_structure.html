@@ -1,0 +1,1675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>360 Social Impact Studios - Rio Grande do Sul Strategy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #3A305D 0%, #98FF98 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #3A305D;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #3A305D;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-top: 80px;
+            padding: 2rem 0;
+        }
+
+        .section {
+            background: white;
+            margin: 2rem 0;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.4s; }
+        .section:nth-child(4) { animation-delay: 0.6s; }
+        .section:nth-child(5) { animation-delay: 0.8s; }
+
+        .section h1 {
+            color: #3A305D;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .section h2 {
+            color: #3A305D;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .section h3 {
+            color: #333;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .section ul {
+            margin-bottom: 1.5rem;
+        }
+
+        .section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Home Section */
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: #3A305D;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #2A1F4A;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #3A305D;
+            border: 2px solid #3A305D;
+        }
+
+        .btn-secondary:hover {
+            background: #3A305D;
+            color: white;
+        }
+
+        /* Strategic Paths */
+        .strategic-paths {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .path-card {
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .path-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .path-porto-alegre {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+        }
+
+        .path-passo-fundo {
+            background: linear-gradient(135deg, #27ae60, #229954);
+            color: white;
+        }
+
+        .path-card h3 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        /* Plan Sections */
+        .plan-visual {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 2rem 0;
+        }
+
+        .central-hub {
+            background: #3A305D;
+            color: white;
+            padding: 2rem;
+            border-radius: 50%;
+            text-align: center;
+            margin-bottom: 2rem;
+            width: 200px;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .stakeholders-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 3rem 0;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .stakeholder-card {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #3A305D;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .stakeholder-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .stakeholder-name {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .stakeholder-org {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            margin: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #3A305D;
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin: 2rem 0;
+            padding: 0 2rem;
+        }
+
+        .timeline-item:nth-child(odd) {
+            text-align: right;
+            padding-right: calc(50% + 2rem);
+        }
+
+        .timeline-item:nth-child(even) {
+            text-align: left;
+            padding-left: calc(50% + 2rem);
+        }
+
+        .timeline-marker {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            background: #3A305D;
+            border-radius: 50%;
+            transform: translateX(-50%);
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Agents Directory */
+        .agents-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .agent-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .agent-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .agent-photo {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #3A305D, #98FF98);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        .agent-info {
+            padding: 1.5rem;
+        }
+
+        .agent-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .agent-role {
+            color: #3A305D;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .agent-org {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .agent-bio {
+            color: #555;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .agent-links {
+            margin-top: 1rem;
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .agent-link {
+            padding: 0.5rem 1rem;
+            background: #f8f9fa;
+            border-radius: 5px;
+            text-decoration: none;
+            color: #3A305D;
+            font-size: 0.8rem;
+            transition: background 0.3s ease;
+        }
+
+        .agent-link:hover {
+            background: #3A305D;
+            color: white;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #666;
+        }
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .stakeholders-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .agents-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Map Styles */
+        .map-legend {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+        }
+
+        .legend-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .legend-marker {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .legend-marker.innovation {
+            background: #667eea;
+        }
+
+        .legend-marker.government {
+            background: #f093fb;
+        }
+
+        .legend-marker.university {
+            background: #4facfe;
+        }
+
+        /* Location Modal Styles */
+        .location-modal-content {
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .location-header {
+            border-bottom: 2px solid #eee;
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .location-title {
+            color: #3A305D;
+            margin-bottom: 0.5rem;
+        }
+
+        .location-address {
+            color: #666;
+            font-style: italic;
+        }
+
+        .strategic-actions {
+            margin-top: 2rem;
+        }
+
+        .action-item {
+            background: #f8f9fa;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .action-title {
+            font-weight: bold;
+            color: #3A305D;
+            margin-bottom: 0.5rem;
+        }
+
+        .action-description {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* Leaflet custom marker styles */
+        .custom-marker {
+            background: white;
+            border: 3px solid;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 12px;
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .marker-innovation {
+            border-color: #667eea;
+            background: #667eea;
+        }
+
+        .marker-government {
+            border-color: #f093fb;
+            background: #f093fb;
+        }
+
+        .marker-university {
+            border-color: #4facfe;
+            background: #4facfe;
+        }
+
+        /* Workflow Styles */
+        .workflow-container {
+            margin: 3rem 0;
+            position: relative;
+        }
+
+        .workflow-path {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            border-radius: 15px;
+            position: relative;
+        }
+
+        .porto-alegre-path {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .passo-fundo-path {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+        }
+
+        .path-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .path-header h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .path-header p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        .workflow-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .workflow-step {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 1.5rem;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .workflow-step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .step-number {
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            width: 30px;
+            height: 30px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .step-content h4 {
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .step-content p {
+            margin-bottom: 1rem;
+            opacity: 0.9;
+            line-height: 1.5;
+        }
+
+        .timeline {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        /* Convergence Section */
+        .convergence-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 3rem 0;
+            gap: 2rem;
+        }
+
+        .convergence-arrow {
+            display: flex;
+            align-items: center;
+        }
+
+        .final-objective {
+            background: linear-gradient(135deg, #3A305D 0%, #98FF98 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 400px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .objective-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .final-objective h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .final-objective h4 {
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .objective-details {
+            display: grid;
+            gap: 0.8rem;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.8rem;
+            border-radius: 8px;
+        }
+
+        .detail-icon {
+            font-size: 1.2rem;
+        }
+
+        /* Synergies Section */
+        .synergies-section {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 3rem;
+        }
+
+        .synergies-section h3 {
+            text-align: center;
+            color: #3A305D;
+            margin-bottom: 2rem;
+        }
+
+        .synergy-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .synergy-item {
+            display: flex;
+            gap: 1rem;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .synergy-item:hover {
+            transform: translateY(-3px);
+        }
+
+        .synergy-icon {
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+
+        .synergy-content h4 {
+            color: #3A305D;
+            margin-bottom: 0.5rem;
+        }
+
+        .synergy-content p {
+            color: #666;
+            line-height: 1.5;
+        }
+    </style>
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />eft: 20px;
+            }
+
+            .timeline-item {
+                padding-left: 3rem !important;
+                padding-right: 1rem !important;
+                text-align: left !important;
+            }
+
+            .timeline-marker {
+                left: 20px !important;
+                transform: none !important;
+            }
+
+            .section {
+                padding: 2rem 1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Hide sections initially for smooth reveal */
+        .section {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .section.visible {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">360 Social Impact Studios</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#porto-alegre">Porto Alegre</a></li>
+                <li><a href="#passo-fundo">Passo Fundo</a></li>
+                <li><a href="#locations-map">Locations Map</a></li>
+                <li><a href="#execution-workflow">Execution Workflow</a></li>
+                <li><a href="#agents">Agents & Sources</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Home Section -->
+            <section id="home" class="section">
+                <div class="hero">
+                    <h1>Entry Strategy in Rio Grande do Sul</h1>
+                    <p class="hero-subtitle">
+                        Connecting innovation and social impact through two strategic paths: 
+                        Porto Alegre and Passo Fundo
+                    </p>
+                    
+                    <div class="strategic-paths">
+                        <div class="path-card path-porto-alegre">
+                            <h3>Porto Alegre</h3>
+                            <p><strong>Deep Integration</strong></p>
+                            <p>Focus on credentials, strategic insertion, and consolidated institutional partnerships</p>
+                        </div>
+                        <div class="path-card path-passo-fundo">
+                            <h3>Passo Fundo</h3>
+                            <p><strong>Agile and Niche Growth</strong></p>
+                            <p>Building trust, community roots, and emerging opportunities</p>
+                        </div>
+                    </div>
+
+                    <div class="cta-buttons">
+                        <a href="#porto-alegre" class="btn btn-primary">Explore Porto Alegre Plan</a>
+                        <a href="#passo-fundo" class="btn btn-secondary">Explore Passo Fundo Plan</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Porto Alegre Plan Section -->
+            <section id="porto-alegre" class="section">
+                <h2>Porto Alegre Plan - Deep Integration</h2>
+                
+                <!-- Ecossistema Data -->
+                <div style="background: #f8f9fa; padding: 2rem; border-radius: 15px; margin-bottom: 2rem;">
+                    <h3 style="color: #3A305D; text-align: center; margin-bottom: 1.5rem;">Innovation Ecosystem - Porto Alegre</h3>
+                    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; text-align: center;">
+                        <div>
+                            <div style="font-size: 2rem; font-weight: bold; color: #3A305D;">3º</div>
+                            <div style="font-size: 0.9rem; color: #666;">Largest ecosystem in the country</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 2rem; font-weight: bold; color: #3A305D;">1000+</div>
+                            <div style="font-size: 0.9rem; color: #666;">Active startups in RS</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 2rem; font-weight: bold; color: #3A305D;">Top 5</div>
+                            <div style="font-size: 0.9rem; color: #666;">Latin America</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 2rem; font-weight: bold; color: #3A305D;">170+</div>
+                            <div style="font-size: 0.9rem; color: #666;">Organizations in Tecnopuc</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="plan-visual">
+                    <div class="central-hub">
+                        FIERGS<br>
+                        Rede de Contatos<br>
+                        <small>(Central Agent)</small>
+                    </div>
+                    
+                    <div class="stakeholders-grid">
+                        <div class="stakeholder-card" onclick="showAgentDetails('jorge-audy')">
+                            <div class="stakeholder-name">Jorge Audy</div>
+                            <div class="stakeholder-org">Tecnopuc</div>
+                        </div>
+                        <div class="stakeholder-card" onclick="showAgentDetails('pedro-valerio')">
+                            <div class="stakeholder-name">Pedro Valério</div>
+                            <div class="stakeholder-org">Instituto Caldeira</div>
+                        </div>
+                        <div class="stakeholder-card" onclick="showAgentDetails('silvio-bitencourt')">
+                            <div class="stakeholder-name">Silvio Bittencourt</div>
+                            <div class="stakeholder-org">Tecnosinos</div>
+                        </div>
+                        <div class="stakeholder-card" onclick="showAgentDetails('simone-stulp')">
+                            <div class="stakeholder-name">Simone Stulp</div>
+                            <div class="stakeholder-org">Inova RS</div>
+                        </div>
+                        <div class="stakeholder-card" onclick="showAgentDetails('luiz-carlos')">
+                            <div class="stakeholder-name">Luiz Carlos Pinto</div>
+                            <div class="stakeholder-org">Prefeitura POA / Pacto Alegre</div>
+                        </div>
+                        <div class="stakeholder-card" onclick="showAgentDetails('debora-chagas')">
+                            <div class="stakeholder-name">Débora Chagas</div>
+                            <div class="stakeholder-org">Numerik</div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>360 Proposals for Entry</h3>
+                <ul>
+                    <li><strong>Free innovation diagnosis</strong> based on ISO 56002</li>
+                    <li><strong>Technical workshop</strong> on Tech Transfer</li>
+                    <li><strong>Co-branded hackathon</strong> with social impact</li>
+                    <li><strong>Voluntary participation</strong> in panels or events</li>
+                </ul>
+
+                <h3>Entry Channels</h3>
+                <ul>
+                    <li>Letters of intent</li>
+                    <li>Content co-authorship</li>
+                    <li>Institutional participation via Inova RS or Caldeira</li>
+                </ul>
+
+                <h3>Tactical Steps (Months 1-6)</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h4>Month 1-2: Establishment and Credibility</h4>
+                            <p>Strategic presentation meetings with Jorge Audy and Pedro Valério. Participation in key ecosystem events.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h4>Month 3-4: Co-creation and Demonstration</h4>
+                            <p>Pro-bono workshops and diagnostics. Institutional letters of intent with FIERGS and Porto Alegre City Hall.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h4>Month 5-6: Consolidation and Expansion</h4>
+                            <p>Pilot projects and joint ventures. Positioning as a reference via Inova RS and FIERGS.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Passo Fundo Plan Section -->
+            <section id="passo-fundo" class="section">
+                <h2>Passo Fundo Plan - Agile and Niche Growth</h2>
+                
+                <!-- Ecossistema Data -->
+                <div style="background: #f8f9fa; padding: 2rem; border-radius: 15px; margin-bottom: 2rem;">
+                    <h3 style="color: #3A305D; text-align: center; margin-bottom: 1.5rem;">Innovation Ecosystem - Passo Fundo</h3>
+                    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; text-align: center;">
+                        <div>
+                                 <div style="font-size: 0.9rem; color: #666;">Unique scientific park in the region</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 2rem; font-weight: bold; color: #3A305D;">SMI-PF</div>
+                            <div style="font-size: 0.9rem; color: #666;">Municipal Innovation System</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 2rem; font-weight: bold; color: #3A305D;">Vértice</div>
+                            <div style="font-size: 0.9rem; color: #666;">Collaborative community</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 2rem; font-weight: bold; color: #3A305D;">Emerging</div>
+                            <div style="font-size: 0.9rem; color: #666;">Growing ecosystem</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="plan-visual">
+                    <div class="central-hub">
+                        FIERGS + UPF<br>
+                        Parque Científico<br>
+                        <small>(Agentes Iniciais)</small>
+                    </div>
+                    
+                    <div class="stakeholders-grid">
+                        <div class="stakeholder-card" onclick="showAgentDetails('upf-tech-park')">
+                            <div class="stakeholder-name">UPF Tech Park</div>
+                            <div class="stakeholder-org">Parque Tecnológico</div>
+                        </div>
+                        <div class="stakeholder-card" onclick="showAgentDetails('prefeitura-pf')">
+                            <div class="stakeholder-name">Secretaria Municipal</div>
+                            <div class="stakeholder-org">Prefeitura de Passo Fundo</div>
+                        </div>
+                        <div class="stakeholder-card" onclick="showAgentDetails('comunidade-vertice')">
+                            <div class="stakeholder-name">Comunidade Vértice</div>
+                            <div class="stakeholder-org">Comunidade de Inovação</div>
+                        </div>
+                        <div class="stakeholder-card" onclick="showAgentDetails('ricardo-fantinelli')">
+                            <div class="stakeholder-name">Ricardo Fantinelli</div>
+                            <div class="stakeholder-org">Especialista em Inovação</div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>360 Proposals</h3>
+                <ul>
+                    <li><strong>Free innovation maturity diagnosis</strong></li>
+                    <li><strong>Technical workshop</strong> for local SMEs</li>
+                    <li><strong>Pilot project</strong> with local companies</li>
+                </ul>
+
+                <h3>Plan Steps</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h4>Month 1-2: Introduction and Alignment</h4>
+                            <p>Institutional presentation via FIERGS. Alignment with city hall and UPF Tech Park.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h4>Month 3-4: Community Engagement</h4>
+                            <p>Community workshops and mentoring. Identification of niche opportunities via Comunidade Vértice.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h4>Month 5-6: Amplification and Fostering</h4>
+                            <p>Fostering investments (seed funding). Amplification via Inova RS Cluster Noroeste.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Interactive Map Section -->
+            <section id="locations-map" class="section">
+                <h2>Strategic Locations Map</h2>
+                <p class="section-subtitle">
+                    Explore the key strategic locations in Porto Alegre. Click on each marker to discover detailed information and strategic actions.
+                </p>
+                
+                <div id="map" style="height: 500px; width: 100%; border-radius: 15px; margin: 2rem 0; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);"></div>
+                
+                <div class="map-legend">
+                    <h3>Strategic Locations</h3>
+                    <div class="legend-items">
+                        <div class="legend-item">
+                            <span class="legend-marker innovation"></span>
+                            <span>Innovation Hubs</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-marker government"></span>
+                            <span>Government Institutions</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-marker university"></span>
+                            <span>Technology Parks</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Execution Workflow Section -->
+            <section id="execution-workflow" class="section">
+                <h2>Execution Workflow</h2>
+                <p class="section-subtitle">
+                    Complete execution map showing how both strategic paths converge to establish 360 Social Impact Studios in Rio Grande do Sul
+                </p>
+                
+                <div class="workflow-container">
+                    <!-- Porto Alegre Path -->
+                    <div class="workflow-path porto-alegre-path">
+                        <div class="path-header">
+                            <h3>Porto Alegre Path</h3>
+                            <p>Deep Integration Strategy</p>
+                        </div>
+                        
+                        <div class="workflow-steps">
+                            <div class="workflow-step" data-phase="1">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <h4>Strategic Connections</h4>
+                                    <p>Initial meetings with Jorge Audy (Tecnopuc), Pedro Valério (Caldeira), and Simone Stulp (Inova RS)</p>
+                                    <span class="timeline">Month 1</span>
+                                </div>
+                            </div>
+                            
+                            <div class="workflow-step" data-phase="2">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <h4>Institutional Positioning</h4>
+                                    <p>Letters of intent with Tecnopuc, Caldeira, and Tecnosinos. Participation in innovation events</p>
+                                    <span class="timeline">Month 2</span>
+                                </div>
+                            </div>
+                            
+                            <div class="workflow-step" data-phase="3">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <h4>Value Demonstration</h4>
+                                    <p>Free ISO 56002 diagnostics, co-branded hackathon, tech transfer workshops</p>
+                                    <span class="timeline">Month 3-4</span>
+                                </div>
+                            </div>
+                            
+                            <div class="workflow-step" data-phase="4">
+                                <div class="step-number">4</div>
+                                <div class="step-content">
+                                    <h4>Public Sector Integration</h4>
+                                    <p>Partnership with Luiz Carlos (Pacto Alegre), smart city projects, impact measurement</p>
+                                    <span class="timeline">Month 5-6</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Passo Fundo Path -->
+                    <div class="workflow-path passo-fundo-path">
+                        <div class="path-header">
+                            <h3>Passo Fundo Path</h3>
+                            <p>Agile Growth & Niche Strategy</p>
+                        </div>
+                        
+                        <div class="workflow-steps">
+                            <div class="workflow-step" data-phase="1">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <h4>Local Introduction</h4>
+                                    <p>Institutional presentation via UPF Tech Park and Ricardo Fantinelli connections</p>
+                                    <span class="timeline">Month 1</span>
+                                </div>
+                            </div>
+                            
+                            <div class="workflow-step" data-phase="2">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <h4>Municipal Alignment</h4>
+                                    <p>Partnership with Municipal Development Secretary, alignment with local priorities</p>
+                                    <span class="timeline">Month 2</span>
+                                </div>
+                            </div>
+                            
+                            <div class="workflow-step" data-phase="3">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <h4>SME Workshop Execution</h4>
+                                    <p>Innovation maturity workshops for local SMEs, pilot projects with agro/health companies</p>
+                                    <span class="timeline">Month 3-4</span>
+                                </div>
+                            </div>
+                            
+                            <div class="workflow-step" data-phase="4">
+                                <div class="step-number">4</div>
+                                <div class="step-content">
+                                    <h4>Regional Amplification</h4>
+                                    <p>Expansion via Comunidade Vértice, integration with Inova RS Northwest Cluster</p>
+                                    <span class="timeline">Month 5-6</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Convergence Section -->
+                    <div class="convergence-section">
+                        <div class="convergence-arrow">
+                            <svg width="100" height="60" viewBox="0 0 100 60">
+                                <path d="M10 20 L80 20 L80 40 L10 40 Z" fill="#667eea" opacity="0.3"/>
+                                <path d="M80 30 L90 30" stroke="#667eea" stroke-width="3" marker-end="url(#arrowhead)"/>
+                                <defs>
+                                    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                                        <polygon points="0 0, 10 3.5, 0 7" fill="#667eea"/>
+                                    </marker>
+                                </defs>
+                            </svg>
+                        </div>
+                        
+                        <div class="final-objective">
+                            <div class="objective-icon">🎯</div>
+                            <h3>360 Social Impact Studios</h3>
+                            <h4>Consolidated in Rio Grande do Sul</h4>
+                            <div class="objective-details">
+                                <div class="detail-item">
+                                    <span class="detail-icon">🏢</span>
+                                    <span>Established presence in both regions</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-icon">🤝</span>
+                                    <span>Strategic partnerships activated</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-icon">📈</span>
+                                    <span>Sustainable revenue streams</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-icon">🌱</span>
+                                    <span>Social impact ecosystem leadership</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Synergies Section -->
+                    <div class="synergies-section">
+                        <h3>Strategic Synergies</h3>
+                        <div class="synergy-items">
+                            <div class="synergy-item">
+                                <div class="synergy-icon">🔄</div>
+                                <div class="synergy-content">
+                                    <h4>Knowledge Transfer</h4>
+                                    <p>Learnings from Porto Alegre's mature ecosystem applied to Passo Fundo's emerging market</p>
+                                </div>
+                            </div>
+                            <div class="synergy-item">
+                                <div class="synergy-icon">🌐</div>
+                                <div class="synergy-content">
+                                    <h4>Network Amplification</h4>
+                                    <p>Combined network effect leveraging both urban sophistication and regional authenticity</p>
+                                </div>
+                            </div>
+                            <div class="synergy-item">
+                                <div class="synergy-icon">⚖️</div>
+                                <div class="synergy-content">
+                                    <h4>Risk Diversification</h4>
+                                    <p>Balanced portfolio approach reducing dependency on single market dynamics</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Agents & Sources Section -->
+            <section id="agents" class="section">
+                <h2>Agents & Sources</h2>
+                <p style="text-align: center; margin-bottom: 2rem; color: #666;">
+                    Complete directory of strategic agents in both plans. Click on each card for more information.
+                </p>
+                
+                <div class="agents-grid" id="agents-grid">
+                    <!-- Agents will be populated by JavaScript -->
+                </div>
+            </section>
+
+
+        </div>
+    </main>
+
+    <!-- Modal for Agent Details -->
+    <div id="agent-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div id="modal-body">
+                <!-- Content will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Location Modal -->
+    <div id="location-modal" class="modal">
+        <div class="modal-content location-modal-content">
+            <span class="close" onclick="closeLocationModal()">&times;</span>
+            <div id="location-modal-body">
+                <!-- Content will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Agent data
+        const agentsData = {
+            'jorge-audy': {
+                name: 'Jorge Audy',
+                role: 'Superintendente de Inovação e Desenvolvimento',
+                organization: 'PUCRS e Tecnopuc',
+                bio: 'Liderança em inovação e desenvolvimento, com experiência em parques tecnológicos e articulação entre academia, setor produtivo e governo. Ex-presidente da Anprotec e membro do Conselho Nacional de Ciência, Tecnologia e Inovação.',
+                links: [
+                    { text: 'LinkedIn', url: 'https://br.linkedin.com/in/jorge-audy-52a8ab44' },
+                    { text: 'PUCRS News', url: 'https://portal.pucrs.br/en/tag/Jorge-Audy/' }
+                ],
+                context: 'Ponto chave para validação institucional e exploração de oportunidades de colaboração com o Tecnopuc, um hub de inovação consolidado.'
+            },
+            'pedro-valerio': {
+                name: 'Pedro Valério',
+                role: 'Diretor Executivo (CEO)',
+                organization: 'Instituto Caldeira',
+                bio: 'Administrador e Diretor Executivo do Instituto Caldeira, com ampla experiência em desenvolvimento de novos negócios e produção de conteúdo. Atua em prol da inovação e do empreendedorismo.',
+                links: [
+                    { text: 'LinkedIn', url: 'https://br.linkedin.com/in/pedro-freitas-valerio-22b0a319' },
+                    { text: 'Instituto Caldeira', url: 'https://institutocaldeira.org.br/' }
+                ],
+                context: 'Ponto chave para alinhamento com as iniciativas de inovação aberta do Instituto Caldeira e conexão com grandes empresas e startups.'
+            },
+            'silvio-bitencourt': {
+                name: 'Silvio Bitencourt da Silva',
+                role: 'Gestor Executivo do TECNOSINOS',
+                organization: 'TECNOSINOS / UNISINOS',
+                bio: 'Doutor em Administração de Empresas, com vasta experiência em gestão de parques tecnológicos e inovação. Presidente do Conselho do Ecossistema do Rio Grande do Sul (EcoSis RS).',
+                links: [
+                    { text: 'LinkedIn', url: 'https://br.linkedin.com/in/silvio-bitencourt-da-silva-850b8128' },
+                    { text: 'Tecnosinos', url: 'https://www.tecnosinos.com.br/' }
+                ],
+                context: 'Importante para a colaboração com o Tecnosinos e para o desenvolvimento de projetos piloto e joint ventures.'
+            },
+            'simone-stulp': {
+                name: 'Simone Stulp',
+                role: 'Secretária de Inovação, Ciência e Tecnologia',
+                organization: 'SICT/RS - Inova RS',
+                bio: 'Liderança na área de inovação e tecnologia no estado do Rio Grande do Sul, com experiência em gestão da inovação e articulação de políticas públicas para o setor.',
+                links: [
+                    { text: 'LinkedIn', url: 'https://br.linkedin.com/in/simone-stulp' },
+                    { text: 'SICT/RS', url: 'https://sict.rs.gov.br/secretaria-simone-stulp' }
+                ],
+                context: 'Fundamental para obter informações sobre eventos e fóruns de inovação do Inova RS, buscando oportunidades de participação ativa.'
+            },
+            'luiz-carlos': {
+                name: 'Luiz Carlos Pinto da Silva Filho',
+                role: 'Secretário de Inovação e Coordenador',
+                organization: 'Prefeitura de Porto Alegre / Pacto Alegre',
+                bio: 'Professor Titular da UFRGS, com vasta experiência em gestão e inovação. Lidera iniciativas para transformar Porto Alegre em um polo de inovação e empreendedorismo.',
+                links: [
+                    { text: 'LinkedIn', url: 'https://br.linkedin.com/in/luiz-carlos-pinto-poa' },
+                    { text: 'Pacto Alegre', url: 'https://pactoalegre.poa.br/' }
+                ],
+                context: 'Contato fundamental para identificar eventos e iniciativas do Pacto Alegre, demonstrando alinhamento com as prioridades da cidade.'
+            },
+            'debora-chagas': {
+                name: 'Débora Chagas',
+                role: 'CEO e Sócia',
+                organization: 'Numerik',
+                bio: 'CEO e Sócia na Numerik, com mais de uma década de experiência em inovação e empreendedorismo. Foco na expansão e crescimento da empresa, com experiência em negócios digitais.',
+                links: [
+                    { text: 'LinkedIn', url: 'https://br.linkedin.com/in/deborabchagas' },
+                    { text: 'Numerik', url: 'https://numerik.co/' }
+                ],
+                context: 'Explorar parcerias com a Numerik para co-criar e entregar soluções de consultoria em inovação.'
+            },
+            'upf-tech-park': {
+                name: 'UPF Tech Park',
+                role: 'Parque Científico e Tecnológico',
+                organization: 'Universidade de Passo Fundo',
+                bio: 'Ecossistema de inovação que conecta a pesquisa da Universidade a startups e grandes empresas, potencializando a inovação. É um dos pioneiros na região de Passo Fundo.',
+                links: [
+                    { text: 'Site oficial', url: 'https://www.upf.br/upfparque' },
+                    { text: 'Quem somos', url: 'https://www.upf.br/upfparque/sobre-o-parque/quem-somos' }
+                ],
+                context: 'Agente chave para sinergias com empresas incubadas e iniciativas de pesquisa da universidade, especialmente em agritech.'
+            },
+            'prefeitura-pf': {
+                name: 'Prefeitura de Passo Fundo',
+                role: 'Secretaria Municipal de Desenvolvimento Econômico',
+                organization: 'Governo Municipal',
+                bio: 'Departamento responsável por qualificar o processo de busca ativa e fomento na atração de novos empreendimentos e negócios para Passo Fundo.',
+                links: [
+                    { text: 'Site oficial', url: 'https://www.pmpf.rs.gov.br/secretaria-de-desenvolvimento-economico/' }
+                ],
+                context: 'Contato fundamental para alinhar os objetivos da 360 com as prioridades de desenvolvimento municipal.'
+            },
+            'comunidade-vertice': {
+                name: 'Comunidade Vértice',
+                role: 'Comunidade de Inovação',
+                organization: 'Movimento colaborativo do ecossistema de Passo Fundo',
+                bio: 'Movimento colaborativo que impulsiona a inovação e fortalece o ecossistema de Passo Fundo. Promove encontros periódicos, missões empresariais e capacitações.',
+                links: [
+                    { text: 'Site oficial', url: 'https://comunidadevertice.com.br/' },
+                    { text: 'LinkedIn', url: 'https://www.linkedin.com/company/comunidade-vertice' }
+                ],
+                context: 'Essencial para engajamento comunitário, workshops e mentorias, além de ser um ponto de entrada para identificar oportunidades de nicho.'
+            },
+            'ricardo-fantinelli': {
+                name: 'Ricardo Fantinelli',
+                role: 'Publicitário e Mestre em Tecnologia',
+                organization: 'Especialista em Inovação e Tecnologia',
+                bio: 'Profissional com vasta experiência em gestão de marcas, design e tecnologia, atuante no ecossistema de inovação de Passo Fundo. Contribui ativamente para o desenvolvimento do ambiente de inovação local.',
+                links: [
+                    { text: 'LinkedIn', url: 'https://www.linkedin.com/in/ricardo-fantinelli' }
+                ],
+                context: 'Contato estratégico com forte influência no ecossistema local, fundamental para estabelecer conexões e parcerias em Passo Fundo.'
+            }
+        };
+
+        // Populate agents grid
+        function populateAgentsGrid() {
+            const grid = document.getElementById('agents-grid');
+            
+            Object.keys(agentsData).forEach(agentId => {
+                const agent = agentsData[agentId];
+                const initials = agent.name.split(' ').map(n => n[0]).join('');
+                
+                const agentCard = document.createElement('div');
+                agentCard.className = 'agent-card';
+                agentCard.onclick = () => showAgentDetails(agentId);
+                
+                agentCard.innerHTML = `
+                    <div class="agent-photo">${initials}</div>
+                    <div class="agent-info">
+                        <div class="agent-name">${agent.name}</div>
+                        <div class="agent-role">${agent.role}</div>
+                        <div class="agent-org">${agent.organization}</div>
+                        <div class="agent-bio">${agent.bio.substring(0, 120)}...</div>
+                        <div class="agent-links">
+                            ${agent.links.map(link => `<a href="${link.url}" class="agent-link" target="_blank" onclick="event.stopPropagation()">${link.text}</a>`).join('')}
+                        </div>
+                    </div>
+                `;
+                
+                grid.appendChild(agentCard);
+            });
+        }
+
+        // Show agent details in modal
+        function showAgentDetails(agentId) {
+            const agent = agentsData[agentId];
+            const modal = document.getElementById('agent-modal');
+            const modalBody = document.getElementById('modal-body');
+            
+            modalBody.innerHTML = `
+                <h2>${agent.name}</h2>
+                <p><strong>Cargo:</strong> ${agent.role}</p>
+                <p><strong>Organização:</strong> ${agent.organization}</p>
+                <p><strong>Biografia:</strong> ${agent.bio}</p>
+                <p><strong>Contexto Estratégico:</strong> ${agent.context}</p>
+                <div style="margin-top: 1rem;">
+                    <strong>Links externos:</strong><br>
+                    ${agent.links.map(link => `<a href="${link.url}" target="_blank" style="display: inline-block; margin: 0.5rem 0.5rem 0.5rem 0; padding: 0.5rem 1rem; background: #667eea; color: white; text-decoration: none; border-radius: 5px;">${link.text}</a>`).join('')}
+                </div>
+            `;
+            
+            modal.style.display = 'flex';
+        }
+
+        // Close modal
+        function closeModal() {
+            document.getElementById('agent-modal').style.display = 'none';
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('agent-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // Smooth scroll reveal animation
+        function revealSections() {
+            const sections = document.querySelectorAll('.section');
+            const windowHeight = window.innerHeight;
+            
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                
+                if (sectionTop < windowHeight - 100) {
+                    section.classList.add('visible');
+                }
+            });
+        }
+
+        // Location data
+        const locationsData = {
+            'instituto-caldeira': {
+                name: 'Instituto Caldeira',
+                address: 'Travessa São José, 455 - Navegantes, Porto Alegre - RS, 90240-200',
+                coordinates: [-30.0346, -51.2177],
+                type: 'innovation',
+                description: 'Innovation hub and startup accelerator in Porto Alegre',
+                actions: [
+                    {
+                        title: 'Free Innovation Diagnostic',
+                        description: 'Offer ISO 56002-based innovation maturity assessment to startups and companies in the Caldeira ecosystem, establishing 360 as a trusted innovation consultant.'
+                    },
+                    {
+                        title: 'Co-branded Hackathon',
+                        description: 'Organize a social impact hackathon with Caldeira\'s community, focusing on solutions for local challenges while showcasing 360\'s methodology and expertise.'
+                    },
+                    {
+                        title: 'Tech Transfer Workshop',
+                        description: 'Conduct technical workshop on technology transfer methodologies, positioning 360 as a bridge between research institutions and market applications.'
+                    }
+                ]
+            },
+            'tecnopuc': {
+                name: 'Tecnopuc (PUCRS Technology Park)',
+                address: 'Av. Ipiranga, 6681 - Partenon, Porto Alegre - RS, 90619-900',
+                coordinates: [-30.0611, -51.1714],
+                type: 'university',
+                description: 'Scientific and Technology Park of PUCRS University',
+                actions: [
+                    {
+                        title: 'University Partnership',
+                        description: 'Establish formal partnership for research collaboration, accessing PUCRS\'s research capabilities and student talent pool for social impact projects.'
+                    },
+                    {
+                        title: 'Student Innovation Program',
+                        description: 'Create internship and mentorship programs that connect students with real-world social impact challenges, building a pipeline of future talent.'
+                    },
+                    {
+                        title: 'Joint R&D Projects',
+                        description: 'Develop collaborative research projects with social impact focus, leveraging university resources and 360\'s market expertise.'
+                    }
+                ]
+            },
+            'tecnosinos': {
+                name: 'Tecnosinos Technology Park',
+                address: 'Av. Unisinos, 950 - São Leopoldo, RS, 93022-750',
+                coordinates: [-29.7947, -51.1500],
+                type: 'university',
+                description: 'Technology park focused on innovation and entrepreneurship',
+                actions: [
+                    {
+                        title: 'SME Innovation Support',
+                        description: 'Provide innovation consulting for small and medium enterprises in the Tecnosinos ecosystem, expanding 360\'s client base in the metropolitan region.'
+                    },
+                    {
+                        title: 'Prototype Development',
+                        description: 'Utilize their advanced labs for social impact solution prototyping, offering clients access to cutting-edge development facilities.'
+                    },
+                    {
+                        title: 'Regional Expansion',
+                        description: 'Use Tecnosinos as gateway for expansion to São Leopoldo region, establishing presence in the broader Porto Alegre metropolitan area.'
+                    }
+                ]
+            },
+            'prefeitura-poa': {
+                name: 'Porto Alegre City Hall',
+                address: 'Praça Montevidéu, 10 - Centro Histórico, Porto Alegre - RS, 90010-170',
+                coordinates: [-30.0277, -51.2287],
+                type: 'government',
+                description: 'Municipal government headquarters',
+                actions: [
+                    {
+                        title: 'Public-Private Partnership',
+                        description: 'Establish formal partnership through Pacto Alegre initiative, positioning 360 as a key player in the city\'s innovation ecosystem development.'
+                    },
+                    {
+                        title: 'Smart City Projects',
+                        description: 'Collaborate on urban innovation and smart city solutions, applying 360\'s expertise to address municipal challenges and improve citizen services.'
+                    },
+                    {
+                        title: 'Social Impact Measurement',
+                        description: 'Develop metrics and KPIs for municipal social programs, establishing 360 as the go-to consultant for impact measurement in the public sector.'
+                    }
+                ]
+            },
+            'palacio-piratini': {
+                name: 'Palácio Piratini (State Government)',
+                address: 'Praça Marechal Deodoro, s/n - Centro Histórico, Porto Alegre - RS, 90010-300',
+                coordinates: [-30.0331, -51.2290],
+                type: 'government',
+                description: 'Rio Grande do Sul state government headquarters',
+                actions: [
+                    {
+                        title: 'State Innovation Policy',
+                        description: 'Participate in state-level innovation policy development, influencing regional innovation strategies and positioning 360 as a thought leader.'
+                    },
+                    {
+                        title: 'Regional Development',
+                        description: 'Support regional development initiatives across RS, expanding 360\'s influence beyond Porto Alegre to the entire state ecosystem.'
+                    },
+                    {
+                        title: 'Inova RS Integration',
+                        description: 'Strengthen collaboration with state innovation program, accessing state resources and networks for broader impact and reach.'
+                    }
+                ]
+            }
+        };
+
+        // Initialize map
+        let map;
+
+        function initializeMap() {
+            // Create map centered on Porto Alegre
+            map = L.map('map').setView([-30.0346, -51.2177], 11);
+            
+            // Add tile layer
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap contributors'
+            }).addTo(map);
+            
+            // Add markers for each location
+            Object.keys(locationsData).forEach(locationId => {
+                const location = locationsData[locationId];
+                
+                // Create custom marker
+                const markerIcon = L.divIcon({
+                    className: `custom-marker marker-${location.type}`,
+                    html: location.name.charAt(0),
+                    iconSize: [30, 30],
+                    iconAnchor: [15, 15]
+                });
+                
+                // Add marker to map
+                const marker = L.marker(location.coordinates, { icon: markerIcon })
+                    .addTo(map)
+                    .on('click', () => showLocationDetails(locationId));
+                
+                // Add tooltip
+                marker.bindTooltip(location.name, {
+                    permanent: false,
+                    direction: 'top',
+                    offset: [0, -15]
+                });
+            });
+        }
+
+        // Show location details in modal
+        function showLocationDetails(locationId) {
+            const location = locationsData[locationId];
+            const modal = document.getElementById('location-modal');
+            const modalBody = document.getElementById('location-modal-body');
+            
+            modalBody.innerHTML = `
+                <div class="location-header">
+                    <h2 class="location-title">${location.name}</h2>
+                    <p class="location-address">${location.address}</p>
+                    <p style="margin-top: 1rem; color: #555;">${location.description}</p>
+                </div>
+                
+                <div class="strategic-actions">
+                    <h3 style="color: #3A305D; margin-bottom: 1rem;">Strategic Actions</h3>
+                    ${location.actions.map((action, index) => `
+                        <div class="action-item">
+                            <div class="action-title">${index + 1}. ${action.title}</div>
+                            <div class="action-description">${action.description}</div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+            
+            modal.style.display = 'flex';
+        }
+
+        // Close location modal
+        function closeLocationModal() {
+            document.getElementById('location-modal').style.display = 'none';
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('location-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeLocationModal();
+            }
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            populateAgentsGrid();
+            revealSections();
+            initializeMap();
+        });
+
+        // Scroll event for reveal animation
+        window.addEventListener('scroll', revealSections);
+    </script>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</body>
+</html>
+
